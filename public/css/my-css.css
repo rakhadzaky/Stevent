@@ -1,0 +1,298 @@
+@font-face{
+    font-family: 'RubikMonoOne';
+    src: url('../font/RubikMonoOne-Regular.ttf');
+}
+.Stev-Navbar{
+    background-color: #ED4C67 !important;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+.Stev-Navbar .Stev-Title{
+    font-family: "RubikMonoOne";
+}
+body{
+    font-family: "Roboto" !important;
+    overflow-x: hidden;
+}
+.Stev-Button-Search{
+    background-color: #ED4C67;
+    color: white;
+}
+.Stev-Button-Search:hover{
+    background-color: #BE1733;
+    color: white;
+}
+.Stev-form-control{
+    background-color: #FBD2D9;
+    border: none;
+    color: #ED4C67;
+}
+.Stev-header{
+    border-bottom: 2px solid #ED4C67;
+    width: 50%;
+}
+.Stev-card-title{
+    font-size: 14pt;
+    font-weight: bold;
+}
+.Stev-card-paragraph{
+    font-size: 10pt;
+}
+
+.Stev-event-background{
+    width: 100%;
+    height: 200px;
+    z-index: -1;
+    position: fixed;
+}
+.Stev-event-background img{
+    width: 100%;
+    position: relative;
+}
+.Stev-event-background .cover{
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    background-color: black;
+    opacity: 0.3;
+    z-index: 2;
+}
+.Stev-event-title{
+    margin-top: -150px;
+    margin-bottom: 100px;
+    color: white;
+}
+.Stev-event{
+    z-index: 1;
+    padding-top: 400px;
+}
+.Stev-event-content{
+    background-color: white;
+    padding: 50px 0;
+    min-height: 600px;
+}
+.Stev-event-header-content{
+    color: #ED4C67;
+}
+.Stev-event-content-date-container{
+    background-color: #FBD2D9;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    font-size: 24pt;
+}
+.Stev-event-content-date-icon{
+    color: #ED4C67;
+    margin: 30% 0 0 30%;
+}
+.Stev-event-content-order{
+    background-color: #ED4C67;
+}
+.Stev-event-modal{
+    width: 100%;
+    position: fixed;
+    top:15%;
+    z-index: 15;
+}
+.Stev-event-modal-background{
+    width: 100%;
+}
+.Stev-event-modal-background img{
+    width: 100%;
+    position: relative;
+    z-index: -1;
+    border-radius: 5px 5px 0 0;
+}
+.Stev-event-modal-content{
+    z-index: 10;
+    margin-top: -100px;
+    background-color: white;
+    padding: 10px 30px;
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+}
+.Stev-event-modal-button{
+    text-align: center;
+    color: white;
+    background-color: #ED4C67;
+}
+.Stev-event-modal-cover{
+    background-color: black;
+    opacity: 0.4;
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+    position: fixed;
+    z-index: 11;
+}
+.hidden{
+    display: none;
+}
+.Stev-organizers-create-event:hover{
+    text-decoration: none;
+}
+.Stev-organizers-create-event img{
+    height: 300px;
+    width: 230px;
+    border-radius: 5px;
+    position: absolute;
+}
+.Stev-organizers-create-event-cover{
+    background-color: black;
+    opacity: 0.4;
+    width: 230px;
+    height: 300px;
+    position: absolute;
+    z-index: 10;
+    border-radius: 5px;
+}
+.Stev-organizers-create-event-plus{
+    position: relative;
+    z-index: 11;
+    left: 25%;
+    top: 15%;
+    color: white;
+    font-size: 96pt;
+}
+.Stev-organizers-create-event-newEvent{
+    position: relative;
+    z-index: 11;
+    left: 25%;
+    color: white;
+    font-size: 16pt;
+}
+.Stev-organizers-create-event:hover .Stev-organizers-create-event-cover{
+    opacity: 0.6;
+    cursor: pointer;
+} 
+.Stev-organizers-create-event-title{
+    position: relative;
+    z-index: 11;
+    left: 8px;
+    color: white;
+    font-size: 16pt;
+    font-weight: bold;
+}
+.Stev-button{
+    background-color : #ED4C67;
+    color: white;
+}
+.Stev-button:hover{
+    background-color: #BE1733;
+    color: white;
+}
+
+.Stev-progressBar li{
+    list-style-type: none;
+    width: 25%;
+    float: left;
+    font-size: 12px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    color: #7d7d7d;
+}
+.Stev-progressBar li:before{
+    width: 30px;
+    height: 30px;
+    content: counter(step);
+    counter-increment: step;
+    line-height: 30px;
+    border: 2px solid #7d7d7d;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: white;
+}
+.Stev-progressBar li:after{
+    width: 100%;
+    height: 2px;
+    content: '';
+    position: absolute;
+    background-color: #7d7d7d;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+}
+.Stev-progressBar li:first-child:after{
+    content: none;
+}
+.Stev-progressBar li.active{
+    color: green;
+}
+.Stev-progressBar li.active:before{
+    border-color: #BE1733;
+    background-color: #ED4C67;
+    color: white;
+}
+.Stev-progressBar li.active + li:after{
+    background-color: #BE1733;
+}
+
+.Stev-dashboard-menu{
+    width: 100%;
+    min-height: 600px;
+    position: fixed;
+    background-color: #BE1733;
+    padding: 0 !important;
+}
+.Stev-dashboard-menu .button-menu{
+    width: 100%;
+    background-color: #BE1733;
+    color: white;
+    padding: 15px 30px;
+}
+.Stev-dashboard-menu .button-menu:hover{
+    background-color: rgb(150, 1, 26);
+    cursor: pointer;
+}
+.Stev-dashboard-menu .button-menu span{
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+.Stev-dashboard-content{
+    padding: 0 !important;
+}
+.Stev-dashboard-content .cover{
+    width: 100%;
+    height: 300px;
+    margin-left: -5px;
+}
+.Stev-dashboard-content .cover-black{
+    width: 100%;
+    height: 300px;
+    margin-left: -5px;
+    position: relative;
+    background-color: black;
+    opacity: 0.5;
+    margin-top: -300px;
+}
+.Stev-dashboard-content .title-box{
+    color: white;
+    padding: 0 100px;
+    position: relative;
+    margin-top: -150px;
+}
+.Stev-dashboard-content .time-section{
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+}
+.Stev-dashboard-content .time-number{
+    font-size: 32pt;
+    margin-right: 10px;
+}
+.Stev-dashboard-content .time-unit{
+    font-size: 12pt;
+    margin-right: 20px;
+}
+.Stev-dashboard-conten .left-side{
+    border-radius: 10px 0 0 10px;
+    border : 2px solid #ED4C67 !important;
+}
+.Stev-dashboard-content .right-side{
+    border-radius: 0 10px 10px 0;
+}
