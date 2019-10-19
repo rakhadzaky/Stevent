@@ -3,7 +3,7 @@
 @section('content')
 <div class="Stev-event-background">
     <div class="cover"></div>
-    <img src="{{ asset('img/event/timthumb.png') }}" alt="">
+    <img src="{{ asset('img/event') }}/timthumb.png" alt="">
 </div>
 
 <!-- <div class="Stev-event-modal-cover" id="cover-modal"></div>

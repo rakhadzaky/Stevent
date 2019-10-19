@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePaymentsTable extends Migration
+class UpdatePaymentsTablesForeign extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreatePaymentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
-            $table->bigIncrements('payment_id');
-            $table->unsignedBigInteger('ticket_id');
-            $table->timestamps();
+        Schema::table('payments', function (Blueprint $table) {
+            $table->foreign('ticket_id')->references('ticket_id')->on('tickets');
         });
     }
 
@@ -27,6 +25,8 @@ class CreatePaymentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::table('payments', function (Blueprint $table) {
+            //
+        });
     }
 }
