@@ -25,7 +25,7 @@
                 <form action="" class="mt-5">
                     <div class="form-group">
                         <label for="poster"></label>
-                        <a href="#"><img class="card-img-top" src="{{ asset('img/upload.png') }}" alt="Card image" style="width:100%"></a>
+                        <a href="#"><img class="card-img-top" src="{{ asset('img/upload.png') }}" alt="Card image" style="width:100%; margin-top:-12%"></a>
                     </div>
                     <button class="btn form-control Stev-button">Next</button>
                 </form>
