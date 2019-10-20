@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@search')->name('home.search');
 Route::get('/event/{id_event}', 'HomeController@event')->name('event');
+Route::get('/getTicket/{id_event}', 'HomeController@getTicket')->name('getTicket');
 Route::prefix('/organizers')->group(function(){
     Route::get('/','OrganizersController@index')->name('organizers.index');
     Route::prefix('/create')->group(function(){

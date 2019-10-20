@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Events;
+use App\Tickets;
+use Illuminate\Support\Facades\Auth;
+
 
 class HomeController extends Controller
 {
@@ -31,6 +34,15 @@ class HomeController extends Controller
     public function event($id){
         $events = Events::find($id);
         return view('event', ['events' => $events]);
+    }
+    public function getTicket($id_event){
+        $ticket = new Tickets;
+        $ticket->id_event = $id_event;
+        $ticket->user_id = Auth::user()->id;
+        $ticket->payment_status = FALSE;
+        $ticket->save();
+
+        return redirect(route('event',['id_event' => $id_event]));
     }
     public function search(Request $request){
         $events = Events::where('judul','like','%'.$request->search.'%')->get();
