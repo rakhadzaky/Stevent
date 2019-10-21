@@ -21,6 +21,9 @@ class OrganizersController extends Controller
     public function createStepTwo(){
         return view('organizers/insertTwo');
     }
+    public function createStepThree(){
+        return view('organizers/insertThree');
+    }
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [

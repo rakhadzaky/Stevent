@@ -296,3 +296,6 @@ body{
 .Stev-dashboard-content .right-side{
     border-radius: 0 10px 10px 0;
 }
+.Stev-input-file:hover{
+    cursor: pointer;
+}
