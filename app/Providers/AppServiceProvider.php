@@ -6,6 +6,9 @@ use Illuminate\Support\ServiceProvider;
 
 use Illuminate\Support\Facades\Schema;
 
+use App\Observers\ItemObserver;
+use App\Tickets;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -26,5 +29,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        Tickets::observe(ItemObserver::class);
     }
 }
