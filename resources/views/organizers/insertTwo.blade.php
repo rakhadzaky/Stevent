@@ -1,6 +1,7 @@
 @extends('../layouts.app')
 
 @section('content')
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <div class="container pt-5">
     <div class="row pt-5">
         <div class="col-md-7">
@@ -10,9 +11,9 @@
 </div>
 <div class="col-md-10 offset-2">
     <ul class="Stev-progressBar">
-        <li class="active">Test</li>
-        <li>Test</li>
-        <li>Test</li>
+        <li class="active">Step 1</li>
+        <li>Step 2</li>
+        <li>Step 3</li>
     </ul>
 </div>
 <br>
@@ -24,7 +25,7 @@
                 <h2 class="text-center" style="color: #ED4C67">Data Event</h2>
                 <form action="" class="mt-5">
                     <div class="form-group">
-                        <label for="kategori">Kategori</label>
+                        <label for="kategori">Kategori</label> 
                         <table>
                             <tr>
                                 <td>
@@ -54,10 +55,28 @@
                         <label for="tanggal">Tanggal</label>
                         <input type="date" name="tanggal" id="tanggal" class="form-control">
                     </div>
+                
+
                     <div class="form-group">
-                        <label for="tempat">Tempat</label>
-                        <input type="text" name="tempat" id="tempat" class="form-control">
+                    <label for="tempat">Tempat</label>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <!--provinsi-->
+                                    <select id="provin" class="form-control" name="provin">
+                                        <option value="">Provinsi</option>
+                                    </select>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <!--kota-->
+                                <select id="kota" class="form-control" name="kota">
+                                    <option value="">Kota/ Kabupaten</option>
+                                    <option id="kota" class="" value="">Kota/Kabupaten</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="form-group">
                         <label for="harga">Harga</label>
                         <input type="text" name="harga" id="harga" class="form-control">
@@ -68,4 +87,10 @@
         </div>
     </div>
 </div>
+
+<script>
+        $(document).ready(function() {
+            $("#kota").chained("#provin");
+        });
+</script>
 @endsection
