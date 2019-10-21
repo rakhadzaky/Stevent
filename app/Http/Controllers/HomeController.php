@@ -49,4 +49,8 @@ class HomeController extends Controller
         $search = $request->search;
         return view('home', ['events' => $events, 'search' => $search]);
     }
+    public function myTicket(){
+        $tickets = Events::join('tickets','tickets.id_event','=','events.id_event')->get();
+        return view('myTickets',['tickets' => $tickets]);
+    }
 }

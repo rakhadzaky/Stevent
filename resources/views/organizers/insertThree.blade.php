@@ -22,12 +22,14 @@
         <div class="col-md-6 offset-3 card mb-5">
             <div class="card-body">
                 <h2 class="text-center" style="color: #ED4C67">Data Event</h2>
-                <form action="" class="mt-5">
+                <form action="{{route('organizers.store.three',['id_event'=>$id_event])}}" class="mt-5" method="post" enctype="multipart/form-data">
+                    @csrf
                 <br><br>
-                    <label for="poster" class="Stev-input-file"><img class="card-img-top" src="{{ asset('img/upload.png') }}" alt="Card image" style="width:100%; margin-top:-12%"></label>
-                    <input type="file" class="hidden" name="poster" id="poster" onChange="changeInput()">
+                    <input type="hidden" name="id_event" value="{{$id_event}}">
+                    <label for="file_cover" class="Stev-input-file"><img class="card-img-top" src="{{ asset('img/upload.png') }}" alt="Card image" style="width:100%; margin-top:-12%"></label>
+                    <input type="file" style="width:1px; height:1px;" name="file_cover" id="file_cover" onChange="changeInput()">
                     <p id="value-file"></p>
-                    <button class="btn form-control Stev-button">Next</button>
+                    <button type="submit" class="btn form-control Stev-button">Next</button>
                 </form>
             </div>
         </div>

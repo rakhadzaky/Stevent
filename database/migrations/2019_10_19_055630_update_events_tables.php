@@ -16,7 +16,7 @@ class UpdateEventsTables extends Migration
         Schema::table('events', function (Blueprint $table) {
             $table->bigInteger('harga');
             $table->timestamp('jadwal')->nullable();
-            $table->string('sampul')->default('img/event/download.jpg');
+            $table->string('sampul')->default('download.jpg');
 
         });
     }

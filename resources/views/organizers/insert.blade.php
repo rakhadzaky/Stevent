@@ -22,16 +22,17 @@
         <div class="col-md-6 offset-3 card mb-5">
             <div class="card-body">
                 <h2 class="text-center" style="color: #ED4C67">Data Event</h2>
-                <form action="" class="mt-5">
+                <form action="{{ route('organizers.store.one') }}" class="mt-5" method="POST">
+                    @csrf
                     <div class="form-group">
                         <label for="judul">Judul</label>
                         <input type="text" name="judul" id="judul" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi</label>
-                        <textarea name="deskrpipsi" id="deskripsi" cols="30" rows="10" class="form-control"></textarea>
+                        <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control"></textarea>
                     </div>
-                    <button class="btn form-control Stev-button">Next</button>
+                    <button type="submit" class="btn form-control Stev-button">Next</button>
                 </form>
             </div>
         </div>

@@ -52,7 +52,7 @@
                             @endif
                         @else
                             <li>
-                                <a href="#" class="nav-link text-light mx-3"><span class="fa fa-ticket" aria-hidden="true"></span></a>
+                                <a href="{{route('myTicket')}}" class="nav-link text-light mx-3"><span class="fa fa-ticket" aria-hidden="true"></span></a>
                             </li>
                             <li>
                                 <a href="#" class="nav-link text-light mx-3"><span class="fa fa-bell" aria-hidden="true"></span></a>
