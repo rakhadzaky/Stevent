@@ -2,22 +2,13 @@
 
 @section('content')
 <div class="container pt-5">
-    <div class="row pt-5">
-        <div class="col-md-7">
-            <h4 class="Stev-header">Your Events</h4>
-        </div>
-        <div class="col-md-5 row">
-        </div>
-    </div>
-</div>
-<div class="container mt-5">
-    <div class="row">
+    <div class="row pt-4">
         @foreach ($events as $events)
-        <a href="{{route('organizers.dashboard')}}" class="col-md-3 Stev-organizers-create-event">
-            <img src="{{ asset('img/event/download.jpg') }}" alt="">
-            <span class="Stev-organizers-create-event-cover"></span><br>
-            <span class="Stev-organizers-create-event-title">{{$events->judul}}</span>
-        </a>
+            <a href="{{route('organizers.dashboard',['id_event' => $events->id_event])}}" class="col-md-3 Stev-organizers-create-event">
+                <img src="{{ asset('img/event') }}/{{$events->sampul}}" alt="">
+                <span class="Stev-organizers-create-event-cover"></span><br>
+                <span class="Stev-organizers-create-event-title">{{$events->judul}}</span>
+            </a>
         @endforeach
         <a href="{{route('organizers.create.one')}}" style="text-decoration: none" class="col-md-3 Stev-organizers-create-event">
             <img src="{{ asset('img/ca7b903624147cd0634f5fbbeeeeed98.jpg') }}" alt="">

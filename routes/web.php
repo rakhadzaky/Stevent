@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@search')->name('home.search');
+Route::get('/searchJS/{value}','HomeController@searchJS')->name('searchJS');
 Route::get('/event/{id_event}', 'HomeController@event')->name('event');
 Route::get('/getTicket/{id_event}', 'HomeController@getTicket')->name('getTicket');
 Route::prefix('/organizers')->group(function(){
@@ -31,7 +32,16 @@ Route::prefix('/organizers')->group(function(){
         Route::get('/three/{id_event}', 'OrganizersController@createStepThree')->name('organizers.create.three');
         Route::post('/storeThree', 'OrganizersController@storeThree')->name('organizers.store.three');
     });
-    Route::get('/dashboard','OrganizersController@dashboard')->name('organizers.dashboard');
+    Route::get('/tickets/{id_event}', 'OrganizersController@ticketList')->name('organizers.ticket');
+    Route::get('/dashboard/{id_event}','OrganizersController@dashboard')->name('organizers.dashboard');
+    Route::get('/settings/{id_event}','OrganizersController@settings')->name('organizers.settings');
+    Route::get('/delete/{id_event}','OrganizersController@destroy')->name('organizers.delete');
+    Route::prefix('/update')->group(function(){
+        Route::post('/title','OrganizersController@UpdateTitle')->name('organizers.update.title');
+        Route::post('/location','OrganizersController@UpdateLocation')->name('organizers.update.location');
+        Route::post('/price','OrganizersController@UpdatePrice')->name('organizers.update.price');
+        Route::post('/desc','OrganizersController@UpdateDesc')->name('organizers.update.desc');
+    });
 });
 Route::resource('organizers', 'OrganizersController');
 Route::get('/my-ticket','HomeController@myTicket')->name('myTicket');

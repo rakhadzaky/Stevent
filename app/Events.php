@@ -9,6 +9,10 @@ class Events extends Model
     protected $table = 'events';
     protected $primaryKey = 'id_event';
     protected $fillable = [
-        'judul', 'tempat', 'deskripsi', 'id_user'
+        'judul', 'tempat', 'provinsi', 'deskripsi', 'id_user','sampul'
     ];
+
+    public function ticket(){
+        return $this->hasMany('App\Tickets','id_event');
+    }
 }

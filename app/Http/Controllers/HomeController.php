@@ -50,7 +50,21 @@ class HomeController extends Controller
         return view('home', ['events' => $events, 'search' => $search]);
     }
     public function myTicket(){
-        $tickets = Events::join('tickets','tickets.id_event','=','events.id_event')->get();
+        $tickets = Events::join('tickets','tickets.id_event','=','events.id_event')->where('user_id','=',Auth::user()->id)->get();
         return view('myTickets',['tickets' => $tickets]);
+    }
+    
+    public function searchJS($value){
+        $search = Events::where('judul','like','%'.$value.'%')
+            // ->orwhere('tempat','like','%'.$value->search.'%')
+            // ->orwhere('provinsi','like','%'.$value->search.'%')
+            // ->orwhere('deskripsi','like','%'.$value->search.'%')
+            // ->orwhere('jadwal','like','%'.$value->search.'%')
+            ->get();
+        
+        return response()->json([
+            'content' => $search,
+        ]);
+        
     }
 }

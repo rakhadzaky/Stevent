@@ -11,6 +11,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -25,7 +27,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm Stev-Navbar">
             <div class="container">
-                <a class="navbar-brand text-light Stev-Title" href="{{ url('/') }}">
+                <a class="navbar-brand text-light Stev-Title" href="{{ route('home') }}">
                     Stevent
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -35,9 +37,29 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        
                     </ul>
-
+                        <div class="Stev-form-image w-50">
+                            <form action="{{route('home.search')}}" method="POST" class="row">
+                                @csrf
+                                <input type="text" name="search" id="search" onInput="showSearch()" class="form-control Stev-form-control" placholder="Search">
+                                <div class="Stev-search-dropdown-box hidden" id="searchBox">
+                                    <!-- <div class="row">
+                                        <div class="col-sm-3">
+                                            <img src="{{ asset('img/event') }}/timthumb.png" alt="" class="w-100">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <b>Judul</b><br>
+                                            <span>Teknologi</span>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <span class="text-weight-light float-right">FREE</span>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </form>
+                            <span class="fa fa-search"></span>
+                        </div>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -95,6 +117,53 @@
                 .notification((notification) => {
                 console.log(notification);
             });
+        }
+        function showSearch(){
+            if ($('#search').val().length> 1) {
+                // do search for this.value here
+                $('#searchBox').removeClass('hidden')
+                var value = $('#search').val()
+                var content = $('#searchBox')
+                var list = ""
+                var address = "{{ asset('img/event') }}"
+                $.getJSON("{{url('')}}/searchJS/"+value, function(result){
+                    $.each(result, function(i, field){
+                        for (let index = 0; index < field.length; index++) {
+                            if(field[index].harga == 0){
+                            list += "<div class='row'>"+
+                                            "<div class='col-sm-3'>"+
+                                                "<img src='"+address+"/"+field[index].sampul+"' alt='Poster' class='w-100 img'>"+
+                                            "</div>"+
+                                            "<div class='col-sm-6'>"+
+                                                "<b>"+field[index].judul+"</b><br>"+
+                                                "<span>Teknologi</span>"+
+                                            "</div>"+
+                                            "<div class='col-sm-3'>"+
+                                            "<span class='text-weight-light float-right'>FREE</span>"+
+                                            "</div>"+
+                                        "</div>"
+                            }else{
+                            list += "<div class='row'>"+
+                                            "<div class='col-sm-3'>"+
+                                                "<img src='"+address+"/"+field[index].sampul+"' alt='Poster' class='w-100 img'>"+
+                                            "</div>"+
+                                            "<div class='col-sm-6'>"+
+                                                "<b>"+field[index].judul+"</b><br>"+
+                                                "<span>Teknologi</span>"+
+                                            "</div>"+
+                                            "<div class='col-sm-3'>"+
+                                            "<span class='text-weight-light float-right'>"+field[index].harga+"</span>"+
+                                            "</div>"+
+                                        "</div>"
+                            }
+                        }
+                        content.html(list)
+                    });
+                });
+
+            }else{
+                $('#searchBox').addClass('hidden')
+            }
         }
     </script>
 </body>

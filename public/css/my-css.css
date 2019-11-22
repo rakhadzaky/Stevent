@@ -3,7 +3,7 @@
     src: url('../font/RubikMonoOne-Regular.ttf');
 }
 .Stev-Navbar{
-    background-color: #ED4C67 !important;
+    background-color: #23283A !important;
     position: fixed;
     width: 100%;
     z-index: 10;
@@ -11,9 +11,30 @@
 .Stev-Navbar .Stev-Title{
     font-family: "RubikMonoOne";
 }
+.Stev-filter-bar{
+    width: 100%;
+    background-color: #0E1128;
+    color: white;
+    padding: 55px 30px 0 30px;
+    position: sticky;
+}
+.Stev-filter-icon-filter{
+    padding: 20px;
+}
+.Stev-filter-button{
+    padding: 20px 10px;
+    width: 150px;
+    background-color: #0E1128;
+    color: white;
+    border: none;
+}
+.Stev-filter-button:hover{
+    background-color: #151515;
+}
 body{
     font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
+    background-color: #CBD4D9;
 }
 .Stev-Button-Search{
     background-color: #ED4C67;
@@ -23,10 +44,47 @@ body{
     background-color: #BE1733;
     color: white;
 }
+.Stev-form-image{
+    position: relative; 
+    margin: 0 auto ;
+    text-align: center;
+}
+.Stev-form-image .fa{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    z-index: 1;
+}
 .Stev-form-control{
-    background-color: #FBD2D9;
+    background-color: #FFF;
     border: none;
-    color: #ED4C67;
+    outline: none;
+    z-index: 1;
+}
+.Stev-search-dropdown-box{
+    width: 106%;
+    background-color: #f2f2f2;
+    padding: 20px 0 10px 0;
+    margin-top: 25px;
+    z-index: 0;
+    text-align: left;
+    border-radius: 10px;
+    position: absolute;
+    box-shadow: 0 5px 5px rgb(169, 181, 187);
+    max-height: 300px;
+    overflow: auto;
+}
+.Stev-search-dropdown-box .img{
+    object-fit: cover;
+    width: 100%;
+    height: 80px;
+}
+.Stev-search-dropdown-box .row{
+    padding: 20px 20px;
+}
+.Stev-search-dropdown-box .row:hover{
+    background-color: #dadada;
+    cursor: pointer;
 }
 .Stev-header{
     border-bottom: 2px solid #ED4C67;
@@ -38,6 +96,21 @@ body{
 }
 .Stev-card-paragraph{
     font-size: 10pt;
+    height: 100px;
+    overflow: hidden;
+}
+.Stev-img-card{
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-bottom-left-radius: calc(0.25rem - 1px);
+    object-fit: cover;
+}
+.Stev-Tag-box{
+    font-size: 8pt;
+    padding: 5px 10px;
+    background-color: #2663FF;
+    color: white;
+    display: inline;
+    border-radius: 10px;
 }
 
 /* tambahan alpi */
@@ -59,37 +132,16 @@ body{
     margin-bottom: -21px;
 }
 
-.Stev-event-background{
-    width: 100%;
-    height: 200px;
-    z-index: -1;
-    position: fixed;
-}
-.Stev-event-background img{
-    width: 100%;
-    position: relative;
-}
-.Stev-event-background .cover{
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    background-color: black;
-    opacity: 0.3;
-    z-index: 2;
-}
-.Stev-event-title{
-    margin-top: -150px;
-    margin-bottom: 100px;
-    color: white;
-}
+
 .Stev-event{
     z-index: 1;
-    padding-top: 400px;
+    padding-top: 80px;
 }
 .Stev-event-content{
     background-color: white;
-    padding: 50px 0;
-    min-height: 600px;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
 }
 .Stev-event-header-content{
     color: #ED4C67;
@@ -107,6 +159,32 @@ body{
 }
 .Stev-event-content-order{
     background-color: #ED4C67;
+}
+.Stev-event-description-box{
+    padding: 0 20px;
+}
+.Stev-event-description-menu{
+    font-weight: bold;
+}
+.Stev-event-description-menu div{
+    padding : 0 20px 10px 20px;
+    text-align: center;
+    display: inline;
+}
+.Stev-event-description-menu .active{
+    color: #5987FC;
+    border-bottom: 2px solid #5987FC;
+}
+.Stev-event-description-menu div:hover{
+    color: #5987fc;
+    cursor: pointer;
+}
+.Stev-event-comment {
+    width: 100%;
+}
+.Stev-comment-img{
+    width: 80px;
+    height: 80px;
 }
 .Stev-event-modal{
     width: 100%;
@@ -148,6 +226,12 @@ body{
 .hidden{
     display: none;
 }
+.Stev-organizers-create-event{
+    position: inline-block;
+    width: 230px;
+    height: 300px;
+    margin-bottom: 25px;
+}
 .Stev-organizers-create-event:hover{
     text-decoration: none;
 }
@@ -156,6 +240,7 @@ body{
     width: 230px;
     border-radius: 5px;
     position: absolute;
+    object-fit: cover;
 }
 .Stev-organizers-create-event-cover{
     background-color: black;
@@ -163,7 +248,7 @@ body{
     width: 230px;
     height: 300px;
     position: absolute;
-    z-index: 10;
+    z-index: 6;
     border-radius: 5px;
 }
 .Stev-organizers-create-event-plus{
@@ -187,18 +272,18 @@ body{
 } 
 .Stev-organizers-create-event-title{
     position: relative;
-    z-index: 11;
+    z-index: 7;
     left: 8px;
     color: white;
     font-size: 16pt;
     font-weight: bold;
 }
 .Stev-button{
-    background-color : #ED4C67;
+    background-color : #23283A;
     color: white;
 }
 .Stev-button:hover{
-    background-color: #BE1733;
+    background-color: #151515;
     color: white;
 }
 
@@ -215,8 +300,7 @@ body{
 .Stev-progressBar li:before{
     width: 30px;
     height: 30px;
-    content: counter(step);
-    counter-increment: step;
+    content: '';
     line-height: 30px;
     border: 2px solid #7d7d7d;
     display: block;
@@ -254,17 +338,17 @@ body{
     width: 100%;
     min-height: 600px;
     position: fixed;
-    background-color: #BE1733;
+    background-color: #0E1128;
     padding: 0 !important;
 }
 .Stev-dashboard-menu .button-menu{
     width: 100%;
-    background-color: #BE1733;
+    background-color: #0E1128;
     color: white;
     padding: 15px 30px;
 }
 .Stev-dashboard-menu .button-menu:hover{
-    background-color: rgb(150, 1, 26);
+    background-color: #000000;
     cursor: pointer;
 }
 .Stev-dashboard-menu .button-menu span{
@@ -272,49 +356,7 @@ body{
     margin-right: 15px;
 }
 
-.Stev-dashboard-content{
-    padding: 0 !important;
-}
-.Stev-dashboard-content .cover{
-    width: 100%;
-    height: 300px;
-    margin-left: -5px;
-}
-.Stev-dashboard-content .cover-black{
-    width: 100%;
-    height: 300px;
-    margin-left: -5px;
-    position: relative;
-    background-color: black;
-    opacity: 0.5;
-    margin-top: -300px;
-}
-.Stev-dashboard-content .title-box{
-    color: white;
-    padding: 0 100px;
-    position: relative;
-    margin-top: -150px;
-}
-.Stev-dashboard-content .time-section{
-    width: 100%;
-    text-align: center;
-    margin-top: 50px;
-}
-.Stev-dashboard-content .time-number{
-    font-size: 32pt;
-    margin-right: 10px;
-}
-.Stev-dashboard-content .time-unit{
-    font-size: 12pt;
-    margin-right: 20px;
-}
-.Stev-dashboard-conten .left-side{
-    border-radius: 10px 0 0 10px;
-    border : 2px solid #ED4C67 !important;
-}
-.Stev-dashboard-content .right-side{
-    border-radius: 0 10px 10px 0;
-}
+
 .Stev-input-file:hover{
     cursor: pointer;
 }

@@ -27,7 +27,7 @@ class OrganizersController extends Controller
     }
     public function storeOne(Request $request){
         $validator = Validator::make($request->all(), [
-            'judul' => 'required',
+            'judul' => 'required|max:100',
             'deskripsi' => 'required',
         ]);
 
@@ -88,11 +88,18 @@ class OrganizersController extends Controller
             Events::where('id_event','=',$request->id_event)->update([
                 'sampul' => $filename
             ]);
-            return redirect(route('event',['id_event' => $request->id_event]));
+            return redirect(route('organizers.dashboard',['id_event' => $request->id_event]));
         }
     }
-    public function dashboard(){
-        return view('organizers/dashboard');
+    public function dashboard($id_event){
+        $event = Events::find($id_event);
+        $provinces = Provinces::all();
+        $citys = Citys::all();
+        return view('organizers/dashboard',['event' => $event, 'provinces' => $provinces, 'citys' => $citys]);
+    }
+    public function settings($id_event){
+        $event = Events::find($id_event);
+        return view('organizers/setting',['event' => $event]);
     }
     /**
      * Store a newly created resource in storage.
@@ -106,6 +113,11 @@ class OrganizersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function ticketList($id_event){
+        $event = Events::find($id_event);
+        $ticket = Events::find($id_event)->ticket;
+        return view('organizers/ticket',['tickets' => $ticket,'event' => $event]);
+    }
     public function show($id)
     {
         //
@@ -139,7 +151,23 @@ class OrganizersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Events::where('id_event','=',$id)->delete();
+        return redirect(route('organizers.index'));
     }
-
+    public function UpdateTitle(Request $req){
+        Events::where('id_event','=',$req->change_title_id)->update(['judul' => $req->changeJudul]);
+        return redirect(route('organizers.dashboard',['id_event' => $req->change_title_id]));
+    }
+    public function UpdateLocation(Request $req){
+        Events::where('id_event','=',$req->change_title_id)->update(['tempat' => $req->kota,'provinsi' => $req->provin]);
+        return redirect(route('organizers.dashboard',['id_event' => $req->change_title_id]));
+    }
+    public function UpdatePrice(Request $req){
+        Events::where('id_event','=',$req->change_title_id)->update(['harga' => $req->changePrice]);
+        return redirect(route('organizers.dashboard',['id_event' => $req->change_title_id]));
+    }
+    public function UpdateDesc(Request $req){
+        Events::where('id_event','=',$req->change_title_id)->update(['deskripsi' => $req->changeDesc]);
+        return redirect(route('organizers.dashboard',['id_event' => $req->change_title_id]));
+    }
 }

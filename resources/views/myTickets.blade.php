@@ -2,71 +2,27 @@
 
 @section('content')
 <div class="container py-4">
-    <div class="row justify-content-center py-4">
-        <div class="col-md-8 mb-4 py-4">
-            <p>Search Event</p>
-                <form action="" method="POST" class="row">
-                    
-                    <div class="col-md-10">
-                        <input type="text" name="search" class="form-control Stev-form-control" placholder="Search" value="">
-                    </div>
-                    <div class="col-md-2">
-                        <button class="btn Stev-Button-Search px-4">Search</button>
-                    </div>
-                </form>
-        </div>
-        <div class="container mt-4">
-            <div class="row mt-4">
-                <div class="col-md-7">
-                    <h4 class="Stev-header">Result</h4>
-                </div>
-                <div class="col-md-5 row">
-                    <div class="col-md-5">
-                        <select name="" class="form-control Stev-form-control" id="">
-                            <option value="" selected disabled>Cateogry</option>
-                            <option value="">Technology</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <select name="" class="form-control Stev-form-control" id="">
-                            <option value="" selected disabled>Day</option>
-                            <option value="">Technology</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <select name="" class="form-control Stev-form-control" id="">
-                            <option value="" selected disabled>Month</option>
-                            <option value="">Technology</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <br>
-            <div class="mt-12">
+    
+            <div class="mt-12 pt-5">
 
                 @foreach($tickets as $ticket)
-                <div class="card">
+                <div class="card" style="background-color: #fff">
                     <div class='row'>
-                        <div class="col-sm-3">
-                            <img class="card-img-top" src="{{ asset('img/event') }}/{{$ticket->sampul}}" alt="Card image" style="width:100%">
+                        <div class="col-md-3">
+                            <img class="card-img-top" src="{{ asset('img/event') }}/{{$ticket->sampul}}" alt="Card image" style="height:100%">
                         </div>
-                        <div class="col-sm-6">
-                            <p><a href="#" style="text-decoration: none; color: black; font-size:25px;" class="Stev-card-title">{{$ticket->judul}}</a>
-                            @if($ticket->payment_status == 0)
-                                <span class="Stev-ticket-status-pending">Pending</span></p>
-                            @else
-                                <span class="Stev-ticket-status-confirmed">Confirmed</span></p>
-                            @endif
-                            <p class="card-text">
-                                <span style="color:#ED4C67;"><i class="fa fa-map-marker" style="font-size:24px; margin-top:-30;"></i> Location </span><br>
-                                alamat lengkap blablablablablablablablablabalbla
-                            </p>
-                                         
-                        </div>
-                            <div class="col-sm-3">
+                        <div class="col-md-9 row">
+                            <div class="col-md-8 p-2">
+                                <p><a href="#" style="text-decoration: none; color: black; font-size:25px;" class="Stev-card-title">{{$ticket->judul}}</a>
+                                <span class="Stev-ticket-status-pending">{{$ticket->payment_status}}</span>
+                                <br>
+                                    <b>Location </b><br>
+                                    {{$ticket->tempat}}, {{$ticket->provinsi}}
+                                </p>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="Stev-ticket-jadwal">
-                                    <p class="card-text">
+                                    <p>
                                         <?php $day_real = date('D',strtotime($ticket->jadwal)); ?>
                                         <?php $day = date('d',strtotime($ticket->jadwal)); ?>
                                         <?php $month_year = date('M Y',strtotime($ticket->jadwal)); ?>
@@ -76,8 +32,14 @@
                                     </p>
                                 </div>
                             </div>
+                            <span style="border:1px solid #e3e3e3" class="w-100"></span>
+                            <div class="my-2 w-100">
+                                <button class="btn btn-primary float-right ml-3">Detail</button>
+                                <button class="btn btn-danger float-right">Delete</button>
+                            </div>
                         </div>
                     </div>
+                </div>
                 <br>
                 @endforeach
 

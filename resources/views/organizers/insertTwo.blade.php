@@ -2,15 +2,8 @@
 
 @section('content')
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<div class="container pt-5">
-    <div class="row pt-5">
-        <div class="col-md-7">
-            <h4 class="Stev-header">Create Event</h4>
-        </div>
-    </div>
-</div>
-<div class="col-md-10 offset-2">
-    <ul class="Stev-progressBar">
+<div class="col-md-10 offset-2 pt-5">
+    <ul class="Stev-progressBar pt-5">
         <li class="active">Step 1</li>
         <li>Step 2</li>
         <li>Step 3</li>
