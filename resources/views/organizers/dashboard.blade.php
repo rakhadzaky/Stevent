@@ -22,7 +22,7 @@
                                     <span class="fa fa-comments"></span> <small class="ml-1 mr-2">20</small>
                                 </h4>
                             </div>
-                            <div class="text-secondary">By Agus Indra Cahaya</div>
+                            <div class="text-secondary">By {{$event->name}}</div>
                             <p class=mt-3>
                                 {{$event->tempat}}, {{$event->provinsi}}
                                 <button type="button" class="btn" data-toggle="modal" data-target="#LocationModal"><span class="fa fa-edit text-info"></span></button>
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-                <p class="mt-5 px-3">{{$event->deskripsi}}</p>
+                <div class="mt-5 px-3">{!! $event->deskripsi !!}</div>
             </div>
         </div>
     </div>
@@ -203,7 +203,7 @@
 
 <!-- The Modal -->
 <div class="modal fade" id="DescModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
     <div class="modal-content" syle="z-index:100">
     
         <!-- Modal Header -->
@@ -218,7 +218,7 @@
         <div class="modal-body">
             <input type="hidden" value="{{$event->id_event}}" name="change_title_id">
             <label for="changeDesc">New Price</label>
-            <textarea name="changeDesc" id="changeDesc" class="form-control">{{$event->deskripsi}}</textarea>
+            <textarea name="changeDesc" id="changeDesc">{{$event->deskripsi}}</textarea>
 
             <!-- <textarea name="LocationDesc" id="locationdesc">{{$event->tempat}}</textarea> -->
         </div>
@@ -235,6 +235,7 @@
 </div>
 
 <script>
+
     function sweetOk(){
         Swal.fire({
             title: 'Data Updated!',

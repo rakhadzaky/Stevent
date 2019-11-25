@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
                                 <div class="Stev-card-paragraph">
-                                    {{$event->deskripsi}}
+                                    {!!$event->deskripsi!!}
                                 </div>
                                 <br>
                                 <div class="Stev-Tag-box">Technology</div>

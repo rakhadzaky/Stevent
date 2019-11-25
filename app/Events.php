@@ -9,7 +9,7 @@ class Events extends Model
     protected $table = 'events';
     protected $primaryKey = 'id_event';
     protected $fillable = [
-        'judul', 'tempat', 'provinsi', 'deskripsi', 'id_user','sampul'
+        'judul', 'tempat', 'provinsi', 'deskripsi', 'id_user','sampul','status'
     ];
 
     public function ticket(){

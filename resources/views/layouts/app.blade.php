@@ -22,6 +22,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/my-css.css') }}" rel="stylesheet">
     <script src="https://use.fontawesome.com/fae8817a1c.js"></script>
+
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({selector:'textarea#changeDesc'});</script>
 </head>
 <body>
     <div id="app">

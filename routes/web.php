@@ -38,6 +38,8 @@ Route::middleware('isUser')->group(function(){
         Route::get('/dashboard/{id_event}','OrganizersController@dashboard')->name('organizers.dashboard');
         Route::get('/settings/{id_event}','OrganizersController@settings')->name('organizers.settings');
         Route::get('/delete/{id_event}','OrganizersController@destroy')->name('organizers.delete');
+        Route::post('/confirm/{id_event}','OrganizersController@confirmTicket')->name('organizers.confirm.ticket');
+        Route::post('/check/{id_event}','OrganizersController@checkTicket')->name('organizers.check.ticket');
         Route::prefix('/update')->group(function(){
             Route::post('/title','OrganizersController@UpdateTitle')->name('organizers.update.title');
             Route::post('/location','OrganizersController@UpdateLocation')->name('organizers.update.location');
@@ -47,6 +49,7 @@ Route::middleware('isUser')->group(function(){
     });
     Route::resource('organizers', 'OrganizersController');
     Route::get('/my-ticket','HomeController@myTicket')->name('myTicket');
+    Route::get('/delete/{id_ticket}','HomeController@deleteTicket')->name('deleteTicket');
 });
 Route::middleware('isAdmin')->group(function(){
     Route::prefix('/admin')->group(function(){

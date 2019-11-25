@@ -9,11 +9,14 @@ use Auth;
 use App\Events;
 use App\Citys;
 use App\Provinces;
+use App\Tickets;
 
 use Illuminate\Support\Facades\Validator;
 
 use Request as RequestFacade;
 use File;
+
+use Illuminate\Support\Facades\DB;
 
 class OrganizersController extends Controller
 {
@@ -41,6 +44,7 @@ class OrganizersController extends Controller
         $event->judul = $request->judul;
         $event->deskripsi = $request->deskripsi;
         $event->id_user = Auth::user()->id;
+        $event->status = 'Step 1';
         $event->save();
 
         $event_id = $event->id_event;
@@ -70,7 +74,8 @@ class OrganizersController extends Controller
             'jadwal' => $request->tanggal,
             'provinsi' => $request->provin,
             'tempat' => $request->kota,
-            'harga' => $request->harga
+            'harga' => $request->harga,
+            'status' => 'Step 2',
         ]);
         
         return redirect(route('organizers.create.three',['id_event' => $request->id_event]));
@@ -86,13 +91,18 @@ class OrganizersController extends Controller
             $path = public_path().'/img/event/';
             $file->move($path, $filename);
             Events::where('id_event','=',$request->id_event)->update([
-                'sampul' => $filename
+                'sampul' => $filename,
+                'status' => 'Step 3',
             ]);
             return redirect(route('organizers.dashboard',['id_event' => $request->id_event]));
         }
     }
     public function dashboard($id_event){
-        $event = Events::find($id_event);
+        $event = DB::table('events')
+            ->join('users','events.id_user','=','users.id')
+            ->where('events.id_event','=',$id_event)
+            ->where('events.id_user','=',Auth::user()->id)
+            ->first();
         $provinces = Provinces::all();
         $citys = Citys::all();
         return view('organizers/dashboard',['event' => $event, 'provinces' => $provinces, 'citys' => $citys]);
@@ -115,9 +125,29 @@ class OrganizersController extends Controller
      */
     public function ticketList($id_event){
         $event = Events::find($id_event);
-        $ticket = Events::find($id_event)->ticket;
+        $ticket = DB::table('tickets')
+            ->join('events','tickets.id_event','=','events.id_event')
+            ->join('users','tickets.user_id','=','users.id')
+            ->where('events.id_event','=',$id_event)
+            ->where('events.id_user','=',Auth::user()->id)
+            ->get();
         return view('organizers/ticket',['tickets' => $ticket,'event' => $event]);
     }
+
+    public function confirmTicket(Request $req, $id_event){
+        Tickets::where('ticket_id','=',$req->id_ticket)->update([
+            'payment_status' => 'confirmed',
+        ]);
+        return redirect(route('organizers.ticket',['id_event' => $id_event]));
+    }
+
+    public function checkTicket(Request $req, $id_event){
+        Tickets::where('ticket_id','=',$req->id_ticket)->update([
+            'payment_status' => 'checkIn',
+        ]);
+        return redirect(route('organizers.ticket',['id_event' => $id_event]));
+    }
+
     public function show($id)
     {
         //

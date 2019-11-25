@@ -4,9 +4,9 @@
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <div class="col-md-10 offset-2 pt-5">
     <ul class="Stev-progressBar pt-5">
-        <li class="active">Step 1</li>
-        <li>Step 2</li>
-        <li>Step 3</li>
+        <li class="active">Main Event Data</li>
+        <li>Detail Event</li>
+        <li>Event's Cover</li>
     </ul>
 </div>
 <br>
@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-md-6 offset-3 card mb-5">
             <div class="card-body">
-                <h2 class="text-center" style="color: #ED4C67">Data Event</h2>
+                <h2 class="text-center" style="color: #23283A">Data Event</h2>
                 <form action="{{route('organizers.store.two')}}" class="mt-5" method="POST">
                     @csrf
                     <input type="hidden" name="id_event" value="{{$id_event}}">

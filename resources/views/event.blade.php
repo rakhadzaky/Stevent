@@ -23,7 +23,7 @@
     <div class="container">
         <div class="Stev-event-content row">
             <div class="col-md-3">
-                <img src="{{ asset('img/event') }}/ca7b903624147cd0634f5fbbeeeeed98.jpg" alt="" class="w-100">
+                <img src="{{ asset('img/event') }}/{{$events->sampul}}" alt="" class="w-100">
             </div>
             <div class="col-md-9">
                 <div class="row">
@@ -82,8 +82,8 @@
                     <div id="comm-Button" class="" onClick="showComment()"><span class="fa fa-comments mr-1"></span> Comments</div>
                 </div>
             </div>
-            <div id="desc">
-                <p class="mt-5 px-3">{{$events->deskripsi}}</p>
+            <div id="desc" class="Stev-event-description-box">
+                <div class="mt-5 px-3">{!!$events->deskripsi!!}</div>
             </div>
             <div id="comment" class="hidden">
                 <div class="Stev-event-comment row mt-5">
@@ -141,20 +141,21 @@
             cancelButtonText: 'I change my mind'
             }).then((result) => {
             if (result.value) {
-                Swal.fire({
-                    title: 'Payment Successfull!',
-                    text: "This event already on your hand!",
-                    icon: 'success',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#908C8C',
-                    confirmButtonText: 'Check it!',
-                    cancelButtonText: 'Skip'
-                    }).then((result) => {
-                    if (result.value) {
-                        location.href = "{{route('myTicket')}}"
-                    }
-                })
+                window.location.href = "{{route('getTicket',['id_event' => $events->id_event])}}"
+                // Swal.fire({
+                //     title: 'Got It!',
+                //     text: "This event already on your hand!",
+                //     icon: 'success',
+                //     showCancelButton: true,
+                //     confirmButtonColor: '#3085d6',
+                //     cancelButtonColor: '#908C8C',
+                //     confirmButtonText: 'Check it!',
+                //     cancelButtonText: 'Skip'
+                //     }).then((result) => {
+                //     if (result.value) {
+                //         location.href = "{{route('myTicket')}}"
+                //     }
+                // })
             }
         })
     }

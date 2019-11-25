@@ -93,6 +93,8 @@ body{
 .Stev-card-title{
     font-size: 14pt;
     font-weight: bold;
+    height: 56px;
+    overflow: hidden;
 }
 .Stev-card-paragraph{
     font-size: 10pt;
@@ -323,15 +325,15 @@ body{
     content: none;
 }
 .Stev-progressBar li.active{
-    color: green;
+    color: #23283A;
 }
 .Stev-progressBar li.active:before{
-    border-color: #BE1733;
-    background-color: #ED4C67;
+    border-color: rgb(73, 81, 112);
+    background-color: rgb(10, 19, 51);
     color: white;
 }
 .Stev-progressBar li.active + li:after{
-    background-color: #BE1733;
+    background-color: rgb(73, 81, 112);
 }
 
 .Stev-dashboard-menu{
