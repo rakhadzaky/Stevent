@@ -20,6 +20,12 @@ use Illuminate\Support\Facades\DB;
 
 class OrganizersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $events = Events::where('id_user','=',Auth::user()->id)->get();
@@ -28,6 +34,8 @@ class OrganizersController extends Controller
     public function createStepOne(){
         return view('organizers/insert');
     }
+
+    // Menyimpan data dari step 1 ke database
     public function storeOne(Request $request){
         $validator = Validator::make($request->all(), [
             'judul' => 'required|max:100',
@@ -56,6 +64,8 @@ class OrganizersController extends Controller
         $citys = Citys::all();
         return view('organizers/insertTwo',['id_event' => $id_event,'provinces' => $provinces,'citys' => $citys]);
     }
+
+    // Menyimpan data dari step 2 ke database
     public function storeTwo(Request $request){
         $validator = Validator::make($request->all(), [
             'tanggal' => 'required|date',
@@ -80,9 +90,12 @@ class OrganizersController extends Controller
         
         return redirect(route('organizers.create.three',['id_event' => $request->id_event]));
     }
+
     public function createStepThree($id_event){
         return view('organizers/insertThree',['id_event' => $id_event]);
     }
+
+    // Menyimpan data dari step 3 ke database
     public function storeThree(Request $request)
     {
         if(RequestFacade::hasFile('file_cover')){
@@ -97,6 +110,8 @@ class OrganizersController extends Controller
             return redirect(route('organizers.dashboard',['id_event' => $request->id_event]));
         }
     }
+
+
     public function dashboard($id_event){
         $event = DB::table('events')
             ->join('users','events.id_user','=','users.id')

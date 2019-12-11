@@ -15,4 +15,8 @@ class Events extends Model
     public function ticket(){
         return $this->hasMany('App\Tickets','id_event');
     }
+
+    public function user(){
+        return $this->hasOne('App\User','id','id_user');
+    }
 }

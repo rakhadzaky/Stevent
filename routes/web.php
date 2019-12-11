@@ -54,5 +54,7 @@ Route::middleware('isUser')->group(function(){
 Route::middleware('isAdmin')->group(function(){
     Route::prefix('/admin')->group(function(){
         Route::get('/home', 'AdminController@index')->name('admin.index');
+        Route::get('/user', 'AdminController@user')->name('admin.user');
+        Route::post('/change', 'AdminController@change_status')->name('admin.change_status');
     });
 });
