@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ExampleTest extends TestCase
+class TicketsTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -19,4 +19,18 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function user_can_buy_a_ticket(){
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+    }
+
+    public function user_can_see_the_events_they_buy(){
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+    }
+
+
 }

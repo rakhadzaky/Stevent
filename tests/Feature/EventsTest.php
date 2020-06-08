@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ExampleTest extends TestCase
+class EventsTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -18,5 +18,17 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
+    }
+
+    public function user_can_create_event(){
+
+    }
+
+    public function user_can_view_list_events(){
+
+    }
+
+    public function user_can_delete_event(){
+        
     }
 }
